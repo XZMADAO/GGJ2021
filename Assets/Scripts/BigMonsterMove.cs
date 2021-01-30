@@ -74,13 +74,13 @@ public class BigMonsterMove : MonoBehaviour
 
     private void RayCheck()     //  …‰œﬂºÏ≤‚
     {
-        
-        RaycastHit2D RightHit = Physics2D.Raycast(MonsterTransform.position, new Vector2(1, 0), Distance);
-        RaycastHit2D LeftHit = Physics2D.Raycast(MonsterTransform.position, new Vector2(-1, 0), Distance);
-        RaycastHit2D UpHit = Physics2D.Raycast(MonsterTransform.position, new Vector2(0, 1), Distance);
-        RaycastHit2D DownHit = Physics2D.Raycast(MonsterTransform.position, new Vector2(0, -1), Distance);
 
-        if(IsRight = false && IsLeft == false && IsUp == false && IsDown == false)
+        RaycastHit2D RightHit = Physics2D.Raycast(new Vector2(MonsterTransform.position.x + 0.5f, MonsterTransform.position.y), new Vector2(1, 0), Distance);
+        RaycastHit2D LeftHit = Physics2D.Raycast(new Vector2(MonsterTransform.position.x - 0.5f, MonsterTransform.position.y), new Vector2(-1, 0), Distance);
+        RaycastHit2D UpHit = Physics2D.Raycast(new Vector2(MonsterTransform.position.x, MonsterTransform.position.y + 0.35f), new Vector2(0, 1), Distance);
+        RaycastHit2D DownHit = Physics2D.Raycast(new Vector2(MonsterTransform.position.x, MonsterTransform.position.y - 0.35f), new Vector2(0, -1), Distance);
+
+        if (IsRight = false && IsLeft == false && IsUp == false && IsDown == false)
         {
             IsFree = true;
         }

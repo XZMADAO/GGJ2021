@@ -9,7 +9,7 @@ public class BigMonsterMove : MonoBehaviour
     public float speed; //  移动速度
     public GameObject BigMonster;       //  大怪对象
     public GameObject SmallMonster;     //  小怪对象
-    public GameObject Heart;     //  掉落血量
+   // public GameObject Heart;     //  掉落血量
     private Transform MonsterTransform;
     private int RandomTime;
     private SpriteRenderer MonsterSprite;
@@ -66,7 +66,7 @@ public class BigMonsterMove : MonoBehaviour
 
         if (IsDead == true)
         {
-            CopyMonster(Heart);
+       //     CopyMonster(Heart);
             Destroy(gameObject);
 
         }

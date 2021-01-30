@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
     public GameObject[] attractArea;
 
     //Movement Relavent
-    private Vector2 dir;
+    public Vector2 dir;
 
     //keyLost Relavent
     private float countDownW;

@@ -100,7 +100,6 @@ MonoBehaviour:
   speed: 3
   BigMonster: {fileID: 1947790296981301334}
   SmallMonster: {fileID: 9159173765169346465, guid: 6634f2e9dbe0a794db8ed7afbe69751f, type: 3}
-  Heart: {fileID: 0}
   RandomTimeMin: 2
   RandomTimeMax: 3
   Distance: 1.5
@@ -141,7 +140,7 @@ BoxCollider2D:
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.34895086, y: -0.535056}

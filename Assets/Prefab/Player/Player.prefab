@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 2476361848254153260}
   - component: {fileID: 2476361848254153261}
   m_Layer: 0
-  m_Name: s
+  m_Name: d
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 2476361848273301384}
   - component: {fileID: 2476361848273301385}
   m_Layer: 0
-  m_Name: d
+  m_Name: s
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,8 +566,9 @@ MonoBehaviour:
   attractArea:
   - {fileID: 2476361848275383451}
   - {fileID: 2476361849365775077}
-  - {fileID: 2476361848254153263}
   - {fileID: 2476361848273301387}
+  - {fileID: 2476361848254153263}
+  dir: {x: 0, y: 0}
 --- !u!1 &2476361849182003692
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,6 +579,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2476361849182003693}
   - component: {fileID: 2476361849182003690}
+  - component: {fileID: 1039906688}
+  - component: {fileID: 1039906689}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -650,6 +653,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1039906688
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476361849182003692}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1f305b45838cb14489fbfdbea14871c6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1039906689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476361849182003692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85547eccbbae24c46a8a0723ecb3d68d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move: {fileID: 2476361848454901141}
 --- !u!1 &2476361849275209793
 GameObject:
   m_ObjectHideFlags: 0

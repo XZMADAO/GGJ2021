@@ -9,17 +9,20 @@ public class SmallMonsterMove : MonoBehaviour
     //public GameObject Player;   //  Íæ¼Ò¶ÔÏó
     private Transform PlayerTransform;
     private Transform SmallMonsterTransform;
+    private SpriteRenderer MonsterSprite;
     public GameObject Heart;    //  µôÂäÉúÃü
     public bool IsAngry;
     public bool IsDead;
     private float Timer;
     public float SearchTime;
-    Vector3 EndPositon; 
+    Vector3 EndPositon;
+    Vector3 Direction;
 
     void Awake()
     {
         PlayerTransform = GameObject.Find("Player").GetComponent<Transform>();
         SmallMonsterTransform = gameObject.GetComponent<Transform>();
+        MonsterSprite = gameObject.GetComponent<SpriteRenderer>();
     }
     void Start()
     {
@@ -31,11 +34,12 @@ public class SmallMonsterMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Direction = EndPositon - SmallMonsterTransform.position;
         Timer += Time.deltaTime;
         if (Timer >= SearchTime)
         {
             EndPositon = PlayerTransform.position;
-
+            
             if (IsAngry == true)
             {
                 SmallMonsterTransform.position = Vector3.MoveTowards(SmallMonsterTransform.position,EndPositon, AngrySpeed * Time.deltaTime);    //  Ë÷µÐ
@@ -59,6 +63,16 @@ public class SmallMonsterMove : MonoBehaviour
             }
         }
 
+
+        if (Direction.x>= 0)
+        {
+            MonsterSprite.flipX = true;
+        }
+        else
+        {
+            MonsterSprite.flipX = false;
+        }
+
         if (IsDead == true)     //  ËÀÍöÅÐ¶¨
         {
             
@@ -72,7 +86,7 @@ public class SmallMonsterMove : MonoBehaviour
             Instantiate(CopyOne, SmallMonsterTransform.position, SmallMonsterTransform.rotation);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)    //   ÏÝÚåÅÐ¶¨
+    private void OnTriggerEnter2D(Collider2D other)    //   ´¥·¢Æ÷ÅÐ¶¨
     {
         Debug.Log("1");
         if (other.gameObject.tag == "trap" || other.gameObject.tag == "edge")
@@ -80,7 +94,17 @@ public class SmallMonsterMove : MonoBehaviour
             IsDead = true;
         }
 
-        if(other.gameObject.tag == "sucker")
+        if (other.gameObject.tag == "bullet")
+        {
+            IsDead = true;
+        }
+
+        if (other.gameObject.tag == "Player")
+        {
+            IsDead = true;
+        }
+
+        if (other.gameObject.tag == "sucker")
         {
             IsAngry = true;
         }

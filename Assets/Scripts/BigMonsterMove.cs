@@ -12,6 +12,7 @@ public class BigMonsterMove : MonoBehaviour
     public GameObject Heart;     //  掉落血量
     private Transform MonsterTransform;
     private int RandomTime;
+    private SpriteRenderer MonsterSprite;
     public int RandomTimeMin;
     public int RandomTimeMax;
     public float Distance;
@@ -20,6 +21,7 @@ public class BigMonsterMove : MonoBehaviour
     public float CopyTime;
     private float RandomDirectionX;
     private float RandomDirectionY;
+    private Animator Anim;
     /*private Vector2[] Directions = new Vector2[] {new Vector2(-1,0), new Vector2(0, 1), new Vector2(0, -1), new Vector2(1,0),
                                                     new Vector2(0.5f, 0.5f) , new Vector2(0.5f, -0.5f),new Vector2(-0.5f, 0.5f),new Vector2(0.5f, 0.5f) };*/
     private Vector2 Direction;
@@ -29,14 +31,16 @@ public class BigMonsterMove : MonoBehaviour
     public bool IsUp; //  是否要撞墙
     public bool IsDown; //  是否要撞墙
     public bool IsDead; //  是否要撞墙
+    public bool IsBorn; //  是否要生子
 
     // Start is called before the first frame update
     void Awake()
     {
         MonsterTransform = BigMonster.GetComponent<Transform>();
+        MonsterSprite = BigMonster.GetComponent<SpriteRenderer>();
         IsFree = true;
         IsDead = false;
-
+        Anim = gameObject.GetComponent<Animator>();
     }
     void Start()
     {
@@ -46,6 +50,7 @@ public class BigMonsterMove : MonoBehaviour
         RandomDirectionX = Random.Range(-1f, 1f);
         RandomDirectionY = Random.Range(-1f, 1f);
         Direction = new Vector2(RandomDirectionX, RandomDirectionY).normalized;
+        Anim.SetBool("IsBorn", false);
 
     }
 
@@ -55,13 +60,15 @@ public class BigMonsterMove : MonoBehaviour
         RayCheck(); 
         Move();
         //  移动逻辑：怪物每隔 （RandomTimeMin 至 RandomTimeMax） 秒变换一次方向，要撞墙时会向反方向移动
-        CopyMonster(SmallMonster);
+        CopyMonstertime();
         // 生小怪逻辑：怪物每隔 （CopyTime） 秒在原地生出一个小怪
 
-        if(IsDead == true)
+
+        if (IsDead == true)
         {
             CopyMonster(Heart);
             Destroy(gameObject);
+
         }
     }
 
@@ -184,17 +191,36 @@ public class BigMonsterMove : MonoBehaviour
 
             MoveTimer = 0;
         }
+
+        if (RandomDirectionX >= 0)
+        {
+            MonsterSprite.flipX = true;
+        }
+        else
+        {
+            MonsterSprite.flipX = false;
+        }
     }
 
-    private void CopyMonster(GameObject CopyOne)    //  生小怪
+    public void CopyMonstertime()    //  生小怪
     {
+        
         CopyTimer += Time.deltaTime;     //  计时
         if(CopyTimer >= CopyTime)
         {
-            Instantiate(CopyOne, MonsterTransform.position, MonsterTransform.rotation);
+            Anim.SetBool("IsBorn", true);
             CopyTimer = 0;
         }
+        
     }
+
+    public void CopyMonster(GameObject CopyOne)
+    {
+        Instantiate(CopyOne, MonsterTransform.position, MonsterTransform.rotation);
+        Anim.SetBool("IsBorn",false);
+    }
+
+
     
     private void OnTriggerEnter2D(Collider2D other)     //  掉落生命
     {

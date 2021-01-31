@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8574316}
   - component: {fileID: 8574315}
+  - component: {fileID: 8574314}
   m_Layer: 0
   m_Name: Fence03 (1)
   m_TagString: trap
@@ -140,6 +141,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!68 &8574314
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574313}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -4.039687, y: 3.4296906}
+  - {x: -2.4670181, y: 1.234789}
+  - {x: 0.63085103, y: -1.097501}
+  - {x: 3.3080192, y: -3.749795}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!212 &8574315
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -476,20 +501,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &290042276
-CapsuleCollider:
+--- !u!70 &290042276
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290042275}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.31036246
-  m_Height: 6.3876953
-  m_Direction: 1
-  m_Center: {x: -0.37047744, y: -1.1519878, z: 0}
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.18291563, y: -0.9145832}
+  m_Size: {x: 6.7074986, y: 7.439166}
+  m_Direction: 0
 --- !u!212 &290042277
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -776,6 +803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 393511580}
   - component: {fileID: 393511579}
+  - component: {fileID: 393511578}
   m_Layer: 0
   m_Name: Fence02 (2)
   m_TagString: trap
@@ -783,6 +811,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!68 &393511578
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393511577}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -3.4452069, y: -3.8412542}
+  - {x: 2.2562473, y: 1.7377099}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!212 &393511579
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1577,6 +1627,7 @@ GameObject:
   m_Component:
   - component: {fileID: 900058960}
   - component: {fileID: 900058959}
+  - component: {fileID: 900058958}
   m_Layer: 0
   m_Name: Fence01
   m_TagString: trap
@@ -1584,6 +1635,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!68 &900058958
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900058957}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -4.588437, y: -0.41156292}
+  - {x: 4.817083, y: -0.3201045}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!212 &900058959
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2089,6 +2162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1039229192}
   - component: {fileID: 1039229191}
+  - component: {fileID: 1039229190}
   m_Layer: 0
   m_Name: Fence03 (2)
   m_TagString: trap
@@ -2096,6 +2170,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!68 &1039229190
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039229189}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -4.1768746, y: 3.292503}
+  - {x: 3.7195828, y: -3.7497954}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!212 &1039229191
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2189,7 +2285,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.69203436, y: -0.5727175}
@@ -2409,6 +2505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1258262696}
   - component: {fileID: 1258262695}
+  - component: {fileID: 1258262694}
   m_Layer: 0
   m_Name: Fence02
   m_TagString: Untagged
@@ -2416,6 +2513,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!68 &1258262694
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258262693}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -3.5157645, y: -3.3395307}
+  - {x: 0.65646935, y: 0.042806864}
+  - {x: 3.812611, y: 3.1911087}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!212 &1258262695
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2491,6 +2611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1259909299}
   - component: {fileID: 1259909298}
+  - component: {fileID: 1259909297}
   m_Layer: 0
   m_Name: Fence03
   m_TagString: trap
@@ -2498,6 +2619,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!68 &1259909297
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259909296}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -3.961035, y: 3.3395307}
+  - {x: -0.8109641, y: 0.22293031}
+  - {x: 3.5157633, y: -3.339531}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!212 &1259909298
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2819,6 +2963,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1933100573}
   - component: {fileID: 1933100572}
+  - component: {fileID: 1933100571}
   m_Layer: 0
   m_Name: Fence02 (1)
   m_TagString: trap
@@ -2826,6 +2971,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!68 &1933100571
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933100570}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -3.4105587, y: -3.5573215}
+  - {x: 0.65737295, y: 0.020453691}
+  - {x: 4.016061, y: 3.4059453}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!212 &1933100572
 SpriteRenderer:
   m_ObjectHideFlags: 0

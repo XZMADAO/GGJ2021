@@ -10,12 +10,13 @@ public class Refresh : MonoBehaviour
     public Vector3 TrapBornPosition;
     public float BornTime;
     float Timer;
-    float HardTimer;
-    public float HardTime;
-    public float BornTimeDown;
+    //float HardTimer;
+    //public float HardTime;
+    //public float BornTimeDown;
     public bool IsMonsterBorn;
     public bool IsTrapBorn;
     int RandomTrap;
+    public bool IsOpen;
     //float RandomTrapX;
     //float RandomTrapY;
 
@@ -23,38 +24,29 @@ public class Refresh : MonoBehaviour
     void Start()
     {
         RandomTrap = 0;
+        MonsterBornPosition = gameObject.transform.position;
+        TrapBornPosition = gameObject.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        HardTimer += Time.deltaTime;
         Timer += Time.deltaTime;
 
-        if(IsMonsterBorn == true)
+        if (IsMonsterBorn == true)
         {
-            if (Timer >= BornTime)
+
+            if (IsOpen == true)
             {
                 Instantiate(BigMonster, MonsterBornPosition, BigMonster.transform.rotation);
-                Timer = 0;
-            }
-
-            if (HardTimer >= HardTime)
-            {
-                BornTime = BornTime - BornTimeDown;
-                HardTimer = 0;
-            }
-
-            if (BornTime <= 1.5f)
-            {
-                HardTimer = 0;
+                IsOpen = false;
             }
 
         }
 
-        if(IsTrapBorn == true)
+        if (IsTrapBorn == true)
         {
-            if(Timer >= BornTime)
+            if (Timer >= BornTime)
             {
                 RandomTrap = Random.Range(0, 4);
                 //RandomTrapX = Random.Range(-7f, 6.8f);

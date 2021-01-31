@@ -10,7 +10,7 @@ public class SmallMonsterMove : MonoBehaviour
     private Transform PlayerTransform;
     private Transform SmallMonsterTransform;
     private SpriteRenderer MonsterSprite;
-    public GameObject Heart;    //  µôÂäÉúÃü
+    //public GameObject Heart;    //  µôÂäÉúÃü
     public bool IsAngry;
     public bool IsDead;
     private float Timer;

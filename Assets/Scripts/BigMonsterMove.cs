@@ -34,6 +34,7 @@ public class BigMonsterMove : MonoBehaviour
     public bool IsBorn; //  是否要生子
 
     public GameObject explosion;
+    public PlayUIRelevant score;
     // Start is called before the first frame update
     void Awake()
     {
@@ -45,6 +46,7 @@ public class BigMonsterMove : MonoBehaviour
     }
     void Start()
     {
+        score = GameObject.Find("Canvas").GetComponent<PlayUIRelevant>();
         MoveTimer = 0;
         CopyTimer = 0;
         RandomTime = Random.Range(RandomTimeMin, RandomTimeMax);
@@ -228,6 +230,7 @@ public class BigMonsterMove : MonoBehaviour
         if(other.gameObject.tag == "bullet")
         {
             GameObject effect = Instantiate(explosion, transform.position, Quaternion.identity);
+            score.score += 2;
             Destroy(other.gameObject);
             Destroy(effect, 5f);
             IsDead = true;

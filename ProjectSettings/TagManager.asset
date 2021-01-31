@@ -9,6 +9,8 @@ TagManager:
   - sucker
   - bullet
   - Monster
+  - KeyTrap
+  - UI
   layers:
   - Default
   - TransparentFX

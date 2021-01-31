@@ -27,9 +27,11 @@ public class AimWeapon : MonoBehaviour
     //Shooting private
     private float shootCountDown;
     private int shootCount = 0;
+    private AudioSource aud;
 
     void Start()
     {
+        aud = GetComponent<AudioSource>();
         relativeX = Mathf.Abs(transform.position.x - player.transform.position.x);
         positiveDetecteAngle = Mathf.Abs(angle);
         negativeDetecteAngle = 180 - positiveDetecteAngle;
@@ -89,6 +91,7 @@ public class AimWeapon : MonoBehaviour
 
     void Shoot()
     {
+        aud.Play();
         GameObject tempBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
         tempBullet.GetComponent<Rigidbody2D>().AddForce(ShootingArea(firePoint.up) * shootForce, ForceMode2D.Impulse);
    //     player.GetComponent<Rigidbody2D>().velocity -= new Vector2(firePoint.up.x * backForce, firePoint.up.y * backForce);

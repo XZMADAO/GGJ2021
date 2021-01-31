@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
       //  {
             if (other.gameObject.tag != "Player")
             {
-                Debug.Log("123");
+ 
                 Destroy(gameObject);
             }
 

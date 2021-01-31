@@ -19,8 +19,11 @@ public class SmallMonsterMove : MonoBehaviour
     Vector3 Direction;
 
     public GameObject explosion;
+
+    public PlayUIRelevant score;
     void Awake()
     {
+        score = GameObject.Find("Canvas").GetComponent<PlayUIRelevant>();
         PlayerTransform = GameObject.Find("Player").GetComponent<Transform>();
         SmallMonsterTransform = gameObject.GetComponent<Transform>();
         MonsterSprite = gameObject.GetComponent<SpriteRenderer>();
@@ -89,7 +92,7 @@ public class SmallMonsterMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)    //   ´¥·¢Æ÷ÅÐ¶¨
     {
-        Debug.Log("1");
+     //   Debug.Log("1");
         if (other.gameObject.tag == "trap" || other.gameObject.tag == "edge")
         {  
             IsDead = true;
@@ -98,6 +101,7 @@ public class SmallMonsterMove : MonoBehaviour
         if (other.gameObject.tag == "bullet")
         {
             GameObject effect = Instantiate(explosion, transform.position, Quaternion.identity);
+            score.score += 1;
             Destroy(other.gameObject);
             Destroy(effect, 5f);
             IsDead = true;

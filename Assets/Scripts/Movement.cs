@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Movement : MonoBehaviour
 {
     private Rigidbody2D rb;
@@ -27,6 +27,7 @@ public class Movement : MonoBehaviour
     [Header("Particle")]
     public ParticleSystem[] keyParticles;
     public ParticleSystem[] novaParticles;
+    public ParticleSystem[] attractParticles;
 
     //Movement Relavent
     public Vector2 dir;
@@ -42,15 +43,22 @@ public class Movement : MonoBehaviour
     private bool dBan;
 
     //attractRelavent
-    private int backBarW;
-    private int backBarA;
-    private int backBarS;
-    private int backBarD;
+    private float backBarW;
+    private float backBarA;
+    private float backBarS;
+    private float backBarD;
     private float attractW;
     private float attractA;
     private float attractS;
     private float attractD;
 
+    public bool touch;
+
+    public GameObject[] hearts;
+    public float invisibleTime;
+    private int heartCount = 3;
+    public bool isInsible;
+    private float invisbleCountDown;
 
     void Start()
     {
@@ -64,6 +72,12 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        if (isInsible)
+            invisbleCountDown -= Time.deltaTime;
+        if (invisbleCountDown < 0&& isInsible)
+            isInsible = false;
+
+
         KeyCountDown();
         KeyCountReset();
         KeyBack();
@@ -88,28 +102,55 @@ public class Movement : MonoBehaviour
         {
             yTemp++;
             countDownW = countDown;
+            touch = false;
         }
 
         if (Input.GetKey(KeyCode.A) && !aBan)
         {
             xTemp--;
             countDownA = countDown;
+            touch = false;
         }
 
         if (Input.GetKey(KeyCode.S) && !sBan)
         {
             yTemp--;
             countDownS = countDown;
+            touch = false;
         }
 
         if (Input.GetKey(KeyCode.D) && !dBan)
         {
             xTemp++;
             countDownD = countDown;
+            touch = false;
         }
+
         dir.x = xTemp;
         dir.y = yTemp;
-    }    
+        if (Input.GetKey(KeyCode.W) && wBan)
+        {
+            dir = Vector2.zero;
+            touch = true;
+        }
+
+        if (Input.GetKey(KeyCode.A) && aBan)
+        {
+            dir = Vector2.zero;
+            touch = true;
+        }
+        if (Input.GetKey(KeyCode.S) && sBan)
+        {
+            dir = Vector2.zero;
+            touch = true;
+        }
+        if (Input.GetKey(KeyCode.D) && dBan)
+        {
+            dir = Vector2.zero;
+            touch = true;
+        }
+
+    }
     void KeyCountDown()
     {
         if (!wBan)
@@ -178,19 +219,19 @@ public class Movement : MonoBehaviour
                 countDownD = 0;
             }
         }
-    }    
+    }
 
     void KeyBack()
     {
         if (wBan)
         {
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKey(KeyCode.W))
             {
-                backBarW++;
+                backBarW +=Time.deltaTime;
                 attractW = attractTime;
                 attractArea[0].SetActive(true);
             }
-            if(backBarW>= backCount)
+            if (backBarW >= backCount)
             {
                 wBan = false;
                 countDownW = countDown;
@@ -201,11 +242,11 @@ public class Movement : MonoBehaviour
             Color tempColor = keys[0].GetComponent<SpriteRenderer>().color;
             keys[0].GetComponent<SpriteRenderer>().color = new Color(tempColor.r, tempColor.g, tempColor.b, backBarW / backCount * 1.0f);
         }
-        if(aBan)
+        if (aBan)
         {
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKey(KeyCode.A))
             {
-                backBarA++;
+                backBarA +=Time.deltaTime;
                 attractA = attractTime;
                 attractArea[1].SetActive(true);
             }
@@ -220,11 +261,11 @@ public class Movement : MonoBehaviour
             Color tempColor = keys[1].GetComponent<SpriteRenderer>().color;
             keys[1].GetComponent<SpriteRenderer>().color = new Color(tempColor.r, tempColor.g, tempColor.b, backBarA / backCount * 1.0f);
         }
-        if(sBan)
+        if (sBan)
         {
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKey(KeyCode.S))
             {
-                backBarS++;
+                backBarS +=Time.deltaTime;
                 attractS = attractTime;
                 attractArea[2].SetActive(true);
             }
@@ -239,11 +280,11 @@ public class Movement : MonoBehaviour
             Color tempColor = keys[2].GetComponent<SpriteRenderer>().color;
             keys[2].GetComponent<SpriteRenderer>().color = new Color(tempColor.r, tempColor.g, tempColor.b, backBarS / backCount * 1.0f);
         }
-        if(dBan)
+        if (dBan)
         {
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKey(KeyCode.D))
             {
-                backBarD++;
+                backBarD +=Time.deltaTime;
                 attractD = attractTime;
                 attractArea[3].SetActive(true);
             }
@@ -264,7 +305,7 @@ public class Movement : MonoBehaviour
 
     void AttractAreaActive()
     {
-        if(wBan)
+        if (wBan)
         {
             if (attractW > 0)
                 attractW -= Time.deltaTime;
@@ -309,9 +350,73 @@ public class Movement : MonoBehaviour
 
     void KeyBackLose()
     {
-        if(wBan)
+        if (wBan)
         {
 
         }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "KeyTrap")
+        {
+            Debug.Log("123");
+            Debug.Log(other.gameObject.name);
+            Debug.Log(wBan);
+            if (other.gameObject.name == "TrapW(Clone)" && !wBan)
+            {
+                Debug.Log("w");
+                keyParticles[0].Play();
+                wBan = true;
+                backBarW = 0;
+                countDownW = 0;
+                Color tempColor = keys[0].GetComponent<SpriteRenderer>().color;
+                keys[0].GetComponent<SpriteRenderer>().color = new Color(tempColor.r, tempColor.g, tempColor.b, 0 / countDown * 1.0f);
+            }
+            if (other.gameObject.name == "TrapA(Clone)" && !aBan)
+            {
+                Debug.Log("a");
+                keyParticles[1].Play();
+                aBan = true;
+                backBarA = 0;
+                countDownA = 0;
+                Color tempColor = keys[1].GetComponent<SpriteRenderer>().color;
+                keys[1].GetComponent<SpriteRenderer>().color = new Color(tempColor.r, tempColor.g, tempColor.b, 0 / countDown * 1.0f);
+            }
+            if (other.gameObject.name == "TrapS(Clone)" && !sBan)
+            {
+                keyParticles[2].Play();
+                sBan = true;
+                backBarS = 0;
+                countDownS = 0;
+                Color tempColor = keys[2].GetComponent<SpriteRenderer>().color;
+                keys[2].GetComponent<SpriteRenderer>().color = new Color(tempColor.r, tempColor.g, tempColor.b, 0 / countDown * 1.0f);
+            }
+            if (other.gameObject.name == "TrapD(Clone)" && !dBan)
+            {
+                keyParticles[3].Play();
+                dBan = true;
+                backBarD = 0;
+                countDownD = 0;
+                Color tempColor = keys[3].GetComponent<SpriteRenderer>().color;
+                keys[3].GetComponent<SpriteRenderer>().color = new Color(tempColor.r, tempColor.g, tempColor.b, 0 / countDown * 1.0f);
+            }
+        }
+
+        if(other.gameObject.tag =="Monster"&&!isInsible)
+        {
+            heartCount--;
+            if (heartCount == -1)
+                SceneManager.LoadScene(1);
+            isInsible = true;
+            invisbleCountDown = invisibleTime;
+            if (heartCount >= 0)
+            {
+                hearts[heartCount].SetActive(false);
+            }
+        }
+       // if()
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
     }
 }

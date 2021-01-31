@@ -29,5 +29,6 @@ public class AnimationScript : MonoBehaviour
             anim.SetFloat("speed", 1);
         else
             anim.SetFloat("speed", 0);
+        anim.SetBool("Touch", move.touch);
     }
 }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2967603687799942819}
   m_Layer: 0
   m_Name: BigMonster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,13 +98,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feca1961fec53ad4abb3e615cc461520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 1.5
   BigMonster: {fileID: 1947790296981301334}
   SmallMonster: {fileID: 9159173765169346465, guid: 6634f2e9dbe0a794db8ed7afbe69751f, type: 3}
   RandomTimeMin: 2
-  RandomTimeMax: 3
-  Distance: 1.5
-  CopyTime: 2
+  RandomTimeMax: 4
+  Distance: 0.3
+  CopyTime: 1.5
   IsFree: 0
   IsLeft: 0
   IsRight: 0

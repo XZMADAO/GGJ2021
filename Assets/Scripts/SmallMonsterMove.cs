@@ -18,6 +18,7 @@ public class SmallMonsterMove : MonoBehaviour
     Vector3 EndPositon;
     Vector3 Direction;
 
+    public GameObject explosion;
     void Awake()
     {
         PlayerTransform = GameObject.Find("Player").GetComponent<Transform>();
@@ -96,6 +97,9 @@ public class SmallMonsterMove : MonoBehaviour
 
         if (other.gameObject.tag == "bullet")
         {
+            GameObject effect = Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(other.gameObject);
+            Destroy(effect, 5f);
             IsDead = true;
         }
 

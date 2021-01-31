@@ -33,6 +33,7 @@ public class BigMonsterMove : MonoBehaviour
     public bool IsDead; //  是否要撞墙
     public bool IsBorn; //  是否要生子
 
+    public GameObject explosion;
     // Start is called before the first frame update
     void Awake()
     {
@@ -226,6 +227,9 @@ public class BigMonsterMove : MonoBehaviour
     {
         if(other.gameObject.tag == "bullet")
         {
+            GameObject effect = Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(other.gameObject);
+            Destroy(effect, 5f);
             IsDead = true;
         }
     }

@@ -62,9 +62,9 @@ public class AimWeapon : MonoBehaviour
         Vector3 direction = (mousePisiotion - transform.position).normalized;
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         if (rotZ > 45 && rotZ < 135)
-            GetComponent<SpriteRenderer>().sortingOrder = 0;
+            GetComponent<SpriteRenderer>().sortingOrder = 3;
         else
-            GetComponent<SpriteRenderer>().sortingOrder = 2;
+            GetComponent<SpriteRenderer>().sortingOrder = 5;
         transform.rotation = Quaternion.Euler(0, 0, rotZ);
         if (Mathf.Abs(transform.position.x - (player.transform.position.x + relativeX)) < 0.001)
         {

@@ -23,6 +23,11 @@ public class Movement : MonoBehaviour
     [Header("AttractArea")]
     public GameObject[] attractArea;
 
+    [Space]
+    [Header("Particle")]
+    public ParticleSystem[] keyParticles;
+    public ParticleSystem[] novaParticles;
+
     //Movement Relavent
     public Vector2 dir;
 
@@ -118,6 +123,7 @@ public class Movement : MonoBehaviour
 
             else
             {
+                keyParticles[0].Play();
                 wBan = true;
                 backBarW = 0;
                 countDownW = 0;
@@ -133,6 +139,7 @@ public class Movement : MonoBehaviour
             }
             else
             {
+                keyParticles[1].Play();
                 aBan = true;
                 backBarA = 0;
                 countDownA = 0;
@@ -149,6 +156,7 @@ public class Movement : MonoBehaviour
             }
             else
             {
+                keyParticles[2].Play();
                 sBan = true;
                 backBarS = 0;
                 countDownS = 0;
@@ -164,6 +172,7 @@ public class Movement : MonoBehaviour
             }
             else
             {
+                keyParticles[3].Play();
                 dBan = true;
                 backBarD = 0;
                 countDownD = 0;
@@ -187,6 +196,7 @@ public class Movement : MonoBehaviour
                 countDownW = countDown;
                 attractW = 0;
                 attractArea[0].SetActive(false);
+                novaParticles[0].Play();
             }
             Color tempColor = keys[0].GetComponent<SpriteRenderer>().color;
             keys[0].GetComponent<SpriteRenderer>().color = new Color(tempColor.r, tempColor.g, tempColor.b, backBarW / backCount * 1.0f);
@@ -205,6 +215,7 @@ public class Movement : MonoBehaviour
                 countDownA = countDown;
                 attractA = 0;
                 attractArea[1].SetActive(false);
+                novaParticles[1].Play();
             }
             Color tempColor = keys[1].GetComponent<SpriteRenderer>().color;
             keys[1].GetComponent<SpriteRenderer>().color = new Color(tempColor.r, tempColor.g, tempColor.b, backBarA / backCount * 1.0f);
@@ -223,6 +234,7 @@ public class Movement : MonoBehaviour
                 countDownS = countDown;
                 attractS = 0;
                 attractArea[2].SetActive(false);
+                novaParticles[2].Play();
             }
             Color tempColor = keys[2].GetComponent<SpriteRenderer>().color;
             keys[2].GetComponent<SpriteRenderer>().color = new Color(tempColor.r, tempColor.g, tempColor.b, backBarS / backCount * 1.0f);
@@ -241,6 +253,7 @@ public class Movement : MonoBehaviour
                 countDownD = countDown;
                 attractD = 0;
                 attractArea[3].SetActive(false);
+                novaParticles[3].Play();
             }
             Color tempColor = keys[3].GetComponent<SpriteRenderer>().color;
             keys[3].GetComponent<SpriteRenderer>().color = new Color(tempColor.r, tempColor.g, tempColor.b, backBarD / backCount * 1.0f);

@@ -145,12 +145,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ccd5622bfe62244ab02119f17cbf0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NormalSpeed: 1.5
+  NormalSpeed: 2
   AngrySpeed: 3
   IsAngry: 0
   IsDead: 0
   SearchTime: 2
   explosion: {fileID: 168108, guid: 681b158798af8504eb431a6f33f6d1e6, type: 3}
+  score: {fileID: 0}
 --- !u!95 &5930933253197803070
 Animator:
   serializedVersion: 3

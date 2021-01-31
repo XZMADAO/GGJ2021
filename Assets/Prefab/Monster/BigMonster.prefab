@@ -113,6 +113,7 @@ MonoBehaviour:
   IsDead: 0
   IsBorn: 0
   explosion: {fileID: 168108, guid: 681b158798af8504eb431a6f33f6d1e6, type: 3}
+  score: {fileID: 0}
 --- !u!95 &1553281575378125700
 Animator:
   serializedVersion: 3
